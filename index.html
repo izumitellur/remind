@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивный макет</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #4FABFF;
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+            justify-content: center;
+            position: relative;
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 1;
+        }
+
+        body::before {
+            left: 0;
+            background: linear-gradient(to right, #4FABFF 0%, transparent 100%);
+            backdrop-filter: blur(10px);
+        }
+
+        body::after {
+            right: 0;
+            background: linear-gradient(to left, #4FABFF 0%, transparent 100%);
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            z-index: 0;
+        }
+
+        .right-block {
+            width: 100%;
+        }
+
+        .right-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media screen and (max-width: 1000px) {
+            body::before,
+            body::after {
+                width: 50px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            body::before,
+            body::after {
+                width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="right-block">
+            <img src="Главная.jpg" alt="Главная">
+        </div>
+    </div>
+</body>
+</html> 
